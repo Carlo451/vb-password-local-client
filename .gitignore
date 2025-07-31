@@ -1,0 +1,38 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary
+*.test
+
+# Output of the go build command
+/build/
+/bin/
+/dist/
+
+# Vendor directory (if you don't use Go modules or vendor manually)
+vendor/
+
+# Go module cache (not needed in repo)
+.gocache/
+go.sum
+
+# IDE/editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*.bak
+
+# Logs and temp files
+*.log
+*.tmp
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+
