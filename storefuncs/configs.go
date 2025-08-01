@@ -31,3 +31,7 @@ func ReadConfigEntry(configPart, storeName string, handler api.PasswordStoreHand
 	contentDir := ReadConfigDirectory(storeName, handler)
 	return retriveContentOutOfContentDir(contentDir, configPart)
 }
+
+func ReadStoreEncryptionId(storeName string, handler api.PasswordStoreHandler) string {
+	return ReadConfigEntry("encryptionId", storeName, handler)
+}
