@@ -8,11 +8,11 @@ import (
 
 const configDirName = "configs"
 const OwnerIdent = "owner"
-const EncryptionIdent = "enryptionId"
+const EncryptionIdent = "encryptionId"
 
 func CreateConfig(owner, encryptionId string) []passwordstoreFilesystem.PasswordStoreContentFile {
 	ownerFile := passwordstoreFilesystem.NewUnrelatedPasswordStoreContentFile(owner, OwnerIdent)
-	enryptionIdFile := passwordstoreFilesystem.NewUnrelatedPasswordStoreContentFile(EncryptionIdent, encryptionId)
+	enryptionIdFile := passwordstoreFilesystem.NewUnrelatedPasswordStoreContentFile(encryptionId, EncryptionIdent)
 	return []passwordstoreFilesystem.PasswordStoreContentFile{
 		*ownerFile, *enryptionIdFile,
 	}

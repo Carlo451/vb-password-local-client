@@ -1,6 +1,7 @@
 package storefuncs
 
 import (
+	"errors"
 	"github.com/Carlo451/vb-password-base-package/cryptography/cryptographyoperations"
 	"github.com/Carlo451/vb-password-base-package/cryptography/keygenerator"
 	"github.com/Carlo451/vb-password-base-package/passwordstore/passwordstoreFilesystem"
@@ -9,10 +10,12 @@ import (
 
 const dirName = "keystore"
 
-func CreateCryptoStore(baseDirectory passwordstoreFilesystem.PasswordStoreDir, masterpassword string) (bool, error) {
+func CreateCryptoStore(baseDirectory passwordstoreFilesystem.PasswordStoreDir, masterPassword string) (bool, error) {
 	contentDir := passwordstoreFilesystem.NewEmptyContentDirecotry(baseDirectory, dirName)
+	infoContent := passwordstoreFilesystem.NewPasswordstoreContentFile("THis directory holds the encrypted passPhrases for the stores", "INFO", contentDir)
+	contentDir.AppendFile(infoContent)
 	contentDir.WriteDirectory()
-	WriteNewKeyPairs("main", masterpassword)
+	WriteNewKeyPairs("main", masterPassword)
 	_, err := os.Stat(contentDir.GetAbsoluteDirectoryPath())
 	if err != nil {
 		return false, err
@@ -22,7 +25,14 @@ func CreateCryptoStore(baseDirectory passwordstoreFilesystem.PasswordStoreDir, m
 
 func GetKeyStore() (*passwordstoreFilesystem.PasswordStoreContentDir, error) {
 	handler := CreateHandler()
-	return handler.ReadContentDir(handler.GetPath(), dirName)
+	store := handler.ReadPasswordStore("")
+	contentDirs := store.GetContentDirectories()
+	for _, contentDir := range contentDirs {
+		if contentDir.GetDirName() == dirName {
+			return &contentDir, nil
+		}
+	}
+	return nil, errors.New("keystore not found")
 }
 
 func WriteNewKeyPairs(encryptionId, passhphrase string) (bool, error) {
@@ -49,7 +59,7 @@ func EncryptContentWithEncrypptionId(encryptionId, clearContent string) (string,
 		return "", err
 	}
 	pubKey := retriveContentOutOfContentDir(*keyStoreDir, encryptionId+".pub")
-	return cryptographyoperations.EncryptStringSymmetric(pubKey, clearContent)
+	return cryptographyoperations.EncryptStringAsymmetric(clearContent, pubKey)
 }
 
 func DecryptContentWithEncryptionIdAndPassword(encryptionId, encryptedContent, passphrase string) (string, error) {

@@ -57,7 +57,7 @@ func CreateBaseDir() (*passwordstoreFilesystem.PasswordStoreDir, error) {
 	return &baseStore, nil
 }
 
-func Init() (bool, error) {
+func Init(masterPassword string) (bool, error) {
 	exists, err := CheckIfBaseDirExists()
 	if err != nil {
 		return false, err
@@ -68,7 +68,7 @@ func Init() (bool, error) {
 		if errbase != nil {
 			return false, err
 		}
-		_, errcrypto := CreateCryptoStore(*base)
+		_, errcrypto := CreateCryptoStore(*base, masterPassword)
 		if errcrypto != nil {
 			return false, err
 		}

@@ -8,10 +8,11 @@ import (
 )
 
 const basePath = "/home/carl-moritz/vB-Passwords"
+const masterpassword = "password123"
 
 func setUp() {
 	os.Setenv("VB_PASSWORD_STORE_BASE_DIR_PATH", basePath)
-	storefuncs.Init()
+	storefuncs.Init(masterpassword)
 }
 func tearDown() {
 	os.RemoveAll(basePath)
