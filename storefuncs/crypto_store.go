@@ -2,10 +2,11 @@ package storefuncs
 
 import (
 	"errors"
+	"os"
+
 	"github.com/Carlo451/vb-password-base-package/cryptography/cryptographyoperations"
 	"github.com/Carlo451/vb-password-base-package/cryptography/keygenerator"
 	"github.com/Carlo451/vb-password-base-package/passwordstore/passwordstoreFilesystem"
-	"os"
 )
 
 const dirName = "keystore"
@@ -58,7 +59,7 @@ func EncryptContentWithEncrypptionId(encryptionId, clearContent string) (string,
 	if err != nil {
 		return "", err
 	}
-	pubKey := retriveContentOutOfContentDir(*keyStoreDir, encryptionId+".pub")
+	pubKey := retrieveContentOutOfContentDir(*keyStoreDir, encryptionId+".pub")
 	return cryptographyoperations.EncryptStringAsymmetric(clearContent, pubKey)
 }
 
@@ -67,7 +68,7 @@ func DecryptContentWithEncryptionIdAndPassword(encryptionId, encryptedContent, p
 	if err != nil {
 		return "", err
 	}
-	privKeyEncrypted := retriveContentOutOfContentDir(*keyStoreDir, encryptionId+".priv.age")
+	privKeyEncrypted := retrieveContentOutOfContentDir(*keyStoreDir, encryptionId+".priv.age")
 	privClear, errDecrypt := cryptographyoperations.DecryptStringSymmetric(privKeyEncrypted, passphrase)
 	if errDecrypt != nil {
 		return "", errDecrypt

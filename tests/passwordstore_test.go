@@ -5,8 +5,6 @@ import (
 	"testing"
 )
 
-const username = "carl-moritz"
-
 func TestConfigRead(t *testing.T) {
 	setUp()
 	storefuncs.CreatePassStore("newTeststore", "1")

@@ -1,9 +1,10 @@
 package storefuncs
 
 import (
+	"path/filepath"
+
 	"github.com/Carlo451/vb-password-base-package/api"
 	"github.com/Carlo451/vb-password-base-package/passwordstore/passwordstoreFilesystem"
-	"path/filepath"
 )
 
 const configDirName = "configs"
@@ -29,7 +30,7 @@ func ReadConfigDirectory(storeName string, handler api.PasswordStoreHandler) pas
 
 func ReadConfigEntry(configPart, storeName string, handler api.PasswordStoreHandler) string {
 	contentDir := ReadConfigDirectory(storeName, handler)
-	return retriveContentOutOfContentDir(contentDir, configPart)
+	return retrieveContentOutOfContentDir(contentDir, configPart)
 }
 
 func ReadStoreEncryptionId(storeName string, handler api.PasswordStoreHandler) string {
