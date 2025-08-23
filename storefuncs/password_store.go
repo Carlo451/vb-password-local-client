@@ -41,4 +41,3 @@ func ReadContentFromStore(storeName, contentPath, identifier string) (string, er
 	}
 	return retrieveContentOutOfContentDir(*content, identifier), nil
 }
-

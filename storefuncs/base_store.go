@@ -115,5 +115,3 @@ func GetAllPassStoreNames() []string {
 	}
 	return storeNames
 }
-
-

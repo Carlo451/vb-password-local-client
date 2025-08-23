@@ -5,7 +5,7 @@ import (
 	"os"
 
 	"github.com/Carlo451/vb-password-base-package/cryptography/cryptographyoperations"
-	"github.com/Carlo451/vb-password-base-package/cryptography/keygenerator"
+	"github.com/Carlo451/vb-password-base-package/cryptography/keys"
 	"github.com/Carlo451/vb-password-base-package/passwordstore/passwordstoreFilesystem"
 )
 
@@ -41,7 +41,7 @@ func WriteNewKeyPairs(encryptionId, passhphrase string) (bool, error) {
 	if err != nil {
 		return false, err
 	}
-	keyPair := keygenerator.GenerateAsymmetricKey()
+	keyPair := keys.GenerateAsymmetricKey()
 	publicKey := keyPair.PublicKey
 	encryptedPrivKey, encryptionErr := cryptographyoperations.EncryptStringSymmetric(keyPair.PrivateKey, passhphrase)
 	if encryptionErr != nil {

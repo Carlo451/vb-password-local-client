@@ -35,6 +35,7 @@ func TestCreatePassStore(t *testing.T) {
 	if encryptionId.Size() < 1 {
 		t.Errorf("New store created with wrong encryptionId")
 	}
+	tearDown()
 }
 
 func TestCreateAndReturnPassStores(t *testing.T) {
@@ -52,4 +53,5 @@ func TestCreateAndReturnPassStores(t *testing.T) {
 			t.Errorf("THis store should not have been created")
 		}
 	}
+	tearDown()
 }
