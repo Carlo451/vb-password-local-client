@@ -18,7 +18,7 @@ func AddEmailToStore(storeName, contentPath, content string) error {
 func AddContentToStore(storeName, contentPath, identifier, content string) error {
 	handler := storefuncs.CreateHandler()
 	encryptionId := storefuncs.ReadStoreEncryptionId(storeName, handler)
-	encryptedContent, err := storefuncs.EncryptContentWithEncrypptionId(encryptionId, content)
+	encryptedContent, err := storefuncs.EncryptContentWithEncryptionId(encryptionId, content)
 	if err != nil {
 		return err
 	}

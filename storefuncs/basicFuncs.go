@@ -1,7 +1,7 @@
 package storefuncs
 
 import (
-	"github.com/Carlo451/vb-password-base-package/passwordstore/passwordstoreFilesystem"
+	"github.com/Carlo451/vb-password-base-package/passwordstoreFilesystem"
 )
 
 func retrieveContentOutOfContentDir(dir passwordstoreFilesystem.PasswordStoreContentDir, fileName string) string {

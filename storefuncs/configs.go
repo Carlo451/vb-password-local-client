@@ -4,7 +4,7 @@ import (
 	"path/filepath"
 
 	"github.com/Carlo451/vb-password-base-package/api"
-	"github.com/Carlo451/vb-password-base-package/passwordstore/passwordstoreFilesystem"
+	"github.com/Carlo451/vb-password-base-package/passwordstoreFilesystem"
 )
 
 const configDirName = "configs"

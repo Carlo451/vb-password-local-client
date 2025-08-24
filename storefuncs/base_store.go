@@ -9,7 +9,7 @@ import (
 
 	"github.com/Carlo451/vb-password-base-package/api"
 	"github.com/Carlo451/vb-password-base-package/environment"
-	"github.com/Carlo451/vb-password-base-package/passwordstore/passwordstoreFilesystem"
+	"github.com/Carlo451/vb-password-base-package/passwordstoreFilesystem"
 )
 
 func CheckIfBaseDirExists() (bool, error) {
