@@ -3,7 +3,7 @@ module github.com/Carlo451/vb-password-local-client
 go 1.24.5
 
 require (
-	github.com/Carlo451/vb-password-base-package v0.0.0-20250824153258-133a4c6a16f3
+	github.com/Carlo451/vb-password-base-package v0.0.0-20250825200950-0846c605ce2a
 	github.com/zalando/go-keyring v0.2.6
 )
 

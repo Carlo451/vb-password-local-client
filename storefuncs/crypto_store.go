@@ -108,7 +108,7 @@ func ChangePasswordOfKeyPair(encryptionId, passphrase, newPassphrase string) err
 	if err != nil {
 		return err
 	}
-	privateKeyFile, _ := keyStoreDir.ReturnFile("encryptionId" + privKeyEnding)
+	privateKeyFile, _ := keyStoreDir.ReturnFile(encryptionId + privKeyEnding)
 	privClear, errDecrypt := cryptographyoperations.DecryptStringSymmetric(privateKeyFile.GetContent(), passphrase)
 	if errDecrypt != nil {
 		return errDecrypt
