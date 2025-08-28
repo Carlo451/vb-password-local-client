@@ -36,3 +36,11 @@ func ReadConfigEntry(configPart, storeName string, handler api.PasswordStoreHand
 func ReadStoreEncryptionId(storeName string, handler api.PasswordStoreHandler) string {
 	return ReadConfigEntry("encryptionId", storeName, handler)
 }
+
+func ReadConfigOwner(storeName string, handler api.PasswordStoreHandler) string {
+	return ReadConfigEntry(OwnerIdent, storeName, handler)
+}
+
+func ReadConfigEncryptionId(storeName string, handler api.PasswordStoreHandler) string {
+	return ReadConfigEntry(EncryptionIdent, storeName, handler)
+}

@@ -41,3 +41,10 @@ func ReadContentFromStore(storeName, contentPath, identifier string) (string, er
 	}
 	return retrieveContentOutOfContentDir(*content, identifier), nil
 }
+
+func ReencryptStoreWithNewKeyPair(storeName, passphrase string) error {
+	handler := CreateHandler()
+	store := handler.ReadPasswordStore(storeName)
+	encryptionId := ReadConfigEncryptionId(storeName, handler)
+	return goDownTreeAndReencryptContent(store, encryptionId, passphrase)
+}

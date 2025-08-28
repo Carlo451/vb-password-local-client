@@ -2,16 +2,16 @@ package exec
 
 import "github.com/Carlo451/vb-password-local-client/storefuncs"
 
-func AddPasswordToStore(storeName, contentPath, content string) error {
-	return AddContentToStore(storeName, contentPath, "password", content)
+func AddPasswordToStore(storeName, contentPath, password string) error {
+	return AddContentToStore(storeName, contentPath, "password", password)
 }
 
-func AddUsernameToStore(storeName, contentPath, content string) error {
-	return AddContentToStore(storeName, contentPath, "username", content)
+func AddUsernameToStore(storeName, contentPath, username string) error {
+	return AddContentToStore(storeName, contentPath, "username", username)
 }
 
-func AddEmailToStore(storeName, contentPath, content string) error {
-	return AddContentToStore(storeName, contentPath, "email", content)
+func AddEmailToStore(storeName, contentPath, email string) error {
+	return AddContentToStore(storeName, contentPath, "email", email)
 
 }
 
